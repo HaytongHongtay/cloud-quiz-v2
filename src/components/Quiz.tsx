@@ -2,6 +2,7 @@
 import React from 'react';
 import { cloudQuiz } from '@/src/config/cloudQuiz';
 import ResultCard from './ResultCard';
+import Typewriter from './Typewriter';
 
 export type Answer = { qid: string; oid: string };
 
@@ -89,7 +90,10 @@ export default function Quiz() {
 
       {phase === 'prompt' && (
         <div className="space-y-5 animate-fade-in">
-          <div className="text-slate-600">{cloudQuiz.betweenPrompts[index % cloudQuiz.betweenPrompts.length]}</div>
+          <Typewriter
+            className="text-slate-600"
+            text={cloudQuiz.betweenPrompts[index % cloudQuiz.betweenPrompts.length]}
+          />
           <button className="btn btn-ghost w-full" onClick={startQuestions}>Continue</button>
         </div>
       )}
@@ -99,7 +103,9 @@ export default function Quiz() {
           <div className="w-full h-2 bg-white/60 rounded-full overflow-hidden">
             <div className="h-full bg-sky-500" style={{ width: `${progress}%` }} />
           </div>
-          <h2 className="text-xl font-medium">{q.text}</h2>
+          <h2 className="text-xl font-medium">
+            <Typewriter text={q.text} />
+          </h2>
           <div className="grid gap-3">
             {q.options.map(opt => (
               <button key={opt.id} className="btn btn-ghost w-full text-left" onClick={() => selectOption(opt.id)}>
