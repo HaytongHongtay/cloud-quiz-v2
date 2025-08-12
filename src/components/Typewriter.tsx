@@ -16,11 +16,12 @@ export default function Typewriter({ text, speed = 120, className }: TypewriterP
     const words = text.split(/\s+/);
     let i = 0;
     const id = setInterval(() => {
-      setDisplayed(prev => prev + (i > 0 ? ' ' : '') + words[i]);
-      i++;
       if (i >= words.length) {
         clearInterval(id);
+        return;
       }
+      setDisplayed(prev => prev + (i > 0 ? ' ' : '') + words[i]);
+      i++;
     }, speed);
     return () => clearInterval(id);
   }, [text, speed]);
