@@ -80,7 +80,7 @@ export default function Quiz() {
   return (
     <div className="pt-8">
       {phase === 'intro' && (
-        <div className="space-y-5">
+        <div className="space-y-5 animate-fade-in">
           <h1 className="text-3xl font-semibold text-sky-700">{cloudQuiz.intro.title}</h1>
           <p className="text-slate-600">{cloudQuiz.intro.lead}</p>
           <button className="btn btn-primary w-full" onClick={nextPrompt}>Begin</button>
@@ -99,16 +99,20 @@ export default function Quiz() {
       )}
 
       {phase === 'question' && (
-        <div className="space-y-5">
+        <div className="space-y-5 animate-fade-in">
           <div className="w-full h-2 bg-white/60 rounded-full overflow-hidden">
-            <div className="h-full bg-sky-500" style={{ width: `${progress}%` }} />
+            <div className="h-full bg-sky-500 transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
           <h2 className="text-xl font-medium">
             <Typewriter text={q.text} />
           </h2>
           <div className="grid gap-3">
             {q.options.map(opt => (
-              <button key={opt.id} className="btn btn-ghost w-full text-left" onClick={() => selectOption(opt.id)}>
+              <button
+                key={opt.id}
+                className="btn btn-ghost w-full text-left transition-transform hover:scale-[0.99]"
+                onClick={() => selectOption(opt.id)}
+              >
                 {opt.label}
               </button>
             ))}

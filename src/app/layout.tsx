@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import ThemeToggle from '@/src/components/ThemeToggle';
 
 export const metadata: Metadata = {
   title: 'Cloud-Type Quiz',
@@ -11,6 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <ThemeToggle />
         <main className="min-h-dvh flex items-stretch">{children}</main>
       </body>
     </html>
