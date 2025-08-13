@@ -6,6 +6,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}", // if you store code in /src
   ],
-  theme: { extend: {} },
+  theme: {
+    extend: {
+      keyframes: {
+        'fade-in': { from: { opacity: '0' }, to: { opacity: '1' } },
+      },
+      animation: { 'fade-in': 'fade-in 0.4s ease-out' },
+    },
+  },
   plugins: [],
+  darkMode: 'class',
 };
