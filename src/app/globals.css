@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --sky-1: 210 100% 97%; /* very light */
-  --sky-2: 210 100% 90%; /* light */
-  --sky-3: 210 100% 85%; /* mid */
+  --sky-1: 210 100% 97%;
+  --sky-2: 210 100% 90%;
+  --sky-3: 210 100% 85%;
 }
-body { @apply bg-gradient-to-b from-sky-100 to-white text-slate-800 dark:from-slate-900 dark:to-slate-800 dark:text-slate-200; }
+
+/* Base page gradient + dark variant */
+body {
+  @apply bg-gradient-to-b from-sky-100 to-white text-slate-800
+         dark:from-indigo-950 dark:to-slate-900 dark:text-slate-200;
+}
 
 .btn { @apply inline-flex items-center justify-center px-4 py-3 rounded-2xl shadow-sm active:scale-[0.99] transition; }
 .btn-primary { @apply bg-sky-600 text-white hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600; }

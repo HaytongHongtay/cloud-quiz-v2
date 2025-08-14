@@ -82,16 +82,16 @@ export default function Quiz() {
       {phase === 'intro' && (
         <div className="space-y-5 animate-fade-in">
           <h1 className="text-3xl font-semibold text-sky-700">{cloudQuiz.intro.title}</h1>
-          <p className="text-slate-600">{cloudQuiz.intro.lead}</p>
+          <p className="text-slate-600 dark:text-slate-300">{cloudQuiz.intro.lead}</p>
           <button className="btn btn-primary w-full" onClick={nextPrompt}>Begin</button>
-          <p className="text-xs text-slate-500">Takes 45–60 seconds • {total} questions</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Takes 45–60 seconds • {total} questions</p>
         </div>
       )}
 
       {phase === 'prompt' && (
         <div className="space-y-5 animate-fade-in">
           <Typewriter
-            className="text-slate-600"
+            className="text-slate-600 dark:text-slate-300"
             text={cloudQuiz.betweenPrompts[index % cloudQuiz.betweenPrompts.length]}
           />
           <button className="btn btn-ghost w-full" onClick={startQuestions}>Continue</button>
@@ -100,8 +100,8 @@ export default function Quiz() {
 
       {phase === 'question' && (
         <div className="space-y-5 animate-fade-in">
-          <div className="w-full h-2 bg-white/60 rounded-full overflow-hidden">
-            <div className="h-full bg-sky-500 transition-all duration-300" style={{ width: `${progress}%` }} />
+          <div className="w-full h-2 bg-white/60 dark:bg-slate-700/60 rounded-full overflow-hidden">
+            <div className="h-full bg-sky-500 dark:bg-sky-400 transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
           <h2 className="text-xl font-medium">
             <Typewriter text={q.text} />
@@ -110,7 +110,7 @@ export default function Quiz() {
             {q.options.map(opt => (
               <button
                 key={opt.id}
-                className="btn btn-ghost w-full text-left transition-transform hover:scale-[0.99]"
+                className="btn btn-ghost w-full text-left transition-transform hover:-translate-y-0.5"
                 onClick={() => selectOption(opt.id)}
               >
                 {opt.label}
