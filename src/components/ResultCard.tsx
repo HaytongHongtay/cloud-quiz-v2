@@ -40,13 +40,13 @@ export default function ResultCard({
       <div className="card text-center">
         <div className="text-6xl">{result.emoji}</div>
         <h2 className="text-2xl font-semibold" style={{ color: result.palette.fg }}>{result.title}</h2>
-        <p className="text-slate-600 mt-2">{result.desc}</p>
+        <p className="text-slate-600 dark:text-slate-300 mt-2">{result.desc}</p>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <button onClick={onShare} className="btn btn-primary w-full"><Share2 className="mr-2 h-5 w-5"/> Share</button>
         <button onClick={onDownload} className="btn btn-ghost w-full"><Download className="mr-2 h-5 w-5"/> Save</button>
       </div>
-      <div className="text-center text-xs text-slate-500">Tip: Use the Share button on mobile.</div>
+      <div className="text-center text-xs text-slate-500 dark:text-slate-400">Tip: Use the Share button on mobile.</div>
     </div>
   );
 }
