@@ -20,8 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <ThemeToggle />
         <main className="min-h-dvh flex items-stretch">{children}</main>
+        <ThemeToggle />
       </body>
     </html>
   );
