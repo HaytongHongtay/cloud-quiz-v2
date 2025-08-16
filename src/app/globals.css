@@ -14,7 +14,89 @@ body {
          dark:from-indigo-950 dark:to-slate-900 dark:text-slate-200;
 }
 
+/* Buttons & Cards */
 .btn { @apply inline-flex items-center justify-center px-4 py-3 rounded-2xl shadow-sm active:scale-[0.99] transition; }
 .btn-primary { @apply bg-sky-600 text-white hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600; }
 .btn-ghost { @apply bg-white/70 backdrop-blur border border-white/60 dark:bg-slate-700/70 dark:border-slate-600; }
 .card { @apply rounded-3xl shadow-lg bg-white/85 backdrop-blur p-5 dark:bg-slate-800/80 dark:text-slate-200; }
+
+/* ===== Backdrop animations ===== */
+
+/* Float horizontally (big slow drift) */
+@keyframes float-x {
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(2.5vw) translateY(-0.6vw); }
+  100% { transform: translateX(0) translateY(0.3vw); }
+}
+.animate-float-x {
+  animation: float-x 18s ease-in-out infinite;
+}
+
+/* Float vertically (slightly different phase) */
+@keyframes float-y {
+  0%   { transform: translateY(0) translateX(0); }
+  50%  { transform: translateY(2.2vw) translateX(-0.7vw); }
+  100% { transform: translateY(0) translateX(0.4vw); }
+}
+.animate-float-y {
+  animation: float-y 22s ease-in-out infinite;
+}
+
+/* Cloud */
+@keyframes float-lite-x { 0%,100%{transform:translateX(0)} 50%{transform:translateX(0.8vw)} }
+@keyframes float-lite-y { 0%,100%{transform:translateY(0)} 50%{transform:translateY(0.6vw)} }
+.animate-float-lite-x { animation: float-lite-x 28s ease-in-out infinite; }
+.animate-float-lite-y { animation: float-lite-y 32s ease-in-out infinite; }
+
+
+/* Twinkling stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.15); }
+}
+.animate-twinkle {
+  animation: twinkle 3.5s ease-in-out infinite;
+}
+
+/* Accessibility: tone down motion if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-x,
+  .animate-float-y,
+  .animate-twinkle {
+    animation: none !important;
+  }
+}
+
+/* ===== Sun rays helper (for daytime) ===== */
+.sun-rays {
+  background: conic-gradient(from 0deg,
+    rgba(252, 211, 77, 0.0) 0deg,
+    rgba(252, 211, 77, 0.25) 15deg,
+    rgba(252, 211, 77, 0.0) 30deg,
+    rgba(252, 211, 77, 0.25) 45deg,
+    rgba(252, 211, 77, 0.0) 60deg,
+    rgba(252, 211, 77, 0.25) 75deg,
+    rgba(252, 211, 77, 0.0) 90deg,
+    rgba(252, 211, 77, 0.25) 105deg,
+    rgba(252, 211, 77, 0.0) 120deg,
+    rgba(252, 211, 77, 0.25) 135deg,
+    rgba(252, 211, 77, 0.0) 150deg,
+    rgba(252, 211, 77, 0.25) 165deg,
+    rgba(252, 211, 77, 0.0) 180deg,
+    rgba(252, 211, 77, 0.25) 195deg,
+    rgba(252, 211, 77, 0.0) 210deg,
+    rgba(252, 211, 77, 0.25) 225deg,
+    rgba(252, 211, 77, 0.0) 240deg,
+    rgba(252, 211, 77, 0.25) 255deg,
+    rgba(252, 211, 77, 0.0) 270deg,
+    rgba(252, 211, 77, 0.25) 285deg,
+    rgba(252, 211, 77, 0.0) 300deg,
+    rgba(252, 211, 77, 0.25) 315deg,
+    rgba(252, 211, 77, 0.0) 330deg,
+    rgba(252, 211, 77, 0.25) 345deg
+  );
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+  border-radius: 9999px;
+  filter: blur(2px);
+}

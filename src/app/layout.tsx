@@ -5,7 +5,7 @@ import ThemeToggle from '@/src/components/ThemeToggle';
 export const metadata: Metadata = {
   title: 'Cloud-Type Quiz',
   description: 'Find your cloud personality',
-  openGraph: { title: 'Cloud-Type Quiz', description: 'Find your cloud personality', images: ['/og.png'] },
+  openGraph: { title: 'Cloud-Type Quiz', description: 'Find your cloud personality', images: ['/og.png'], },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
